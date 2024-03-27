@@ -16,6 +16,7 @@ public class Program
             {
                 services
                 .AddScoped<ISoapClientService, SoapClientService>()
+                .AddLogging()
                 .AddHostedService<Worker>()
                 .AddHttpClient("MyPrecious", client =>
                 {
@@ -31,15 +32,14 @@ public class Program
     public  class Worker(ILogger<Worker> logger, ISoapClientService service) : BackgroundService
     {
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        protected override  Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            logger.LogDebug("Worker running..");
             while (!stoppingToken.IsCancellationRequested)
-            {
-                logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+            { 
                 service.FetchMeaningOfLife().ConfigureAwait(false);
-                //logger.LogInformation($"Soap service returned {result} to Worker");
-                //await Task.Delay(1_000, stoppingToken).ConfigureAwait(false);
             }
+            return Task.CompletedTask;
         }
     }
 

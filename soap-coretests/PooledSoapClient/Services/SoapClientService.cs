@@ -10,24 +10,21 @@ namespace SoapTestService.Services
 
         private ServiceClient _soapClient = null!;
         private readonly ILogger<Worker> _logger = null!;
-        private int _state = 1;
 
         public SoapClientService(IHttpMessageHandlerFactory factory, ILogger<Worker> logger)
         {
             _logger = logger;
             _soapClient = new ServiceClient();
             _soapClient.Endpoint.EndpointBehaviors.Add(new HttpMessageHandlerBehavior(factory, ServiceName));
+
+            _logger.LogWarning("Created a pooled soap client ...");
         }
 
         public async Task FetchMeaningOfLife()
         {
-            int request = (int)DateTime.UtcNow.Ticks;
-            //_logger.LogInformation($"SoapClientService.FetchMeaningOfLife state: {_state}");
+            //_logger.LogDebug("FetchMeaningOfLife called");
             var channel = _soapClient.ChannelFactory.CreateChannel();
-            var result = await channel.GetDataAsync(request).ConfigureAwait(false);
-            //_logger.LogInformation($"SoapClientService.FetchMeaningOfLife returned '{result}'");
-            _state++;
-
+            await channel.GetDataAsync(1).ConfigureAwait(false);
         }
 
 

@@ -14,6 +14,9 @@ Build and run from terminal or VS debug session
 
 <h2>Monitoring TCP connections in Win10/11</h2>
 
+It takes some time for the clients to eat upp the TCP connections so the process can easily be monitored by polling the total 
+number of connections from a command line.
+
 Use  <i> Get-NetTCPConnection | Measure-Object</i> in PowerShell terminal to get total number of connections.  
 Note that this can be bit slow when the system gets loaded.
 

@@ -17,8 +17,9 @@ namespace SoapTestService.Services
 
         public async Task FetchMeaningOfLife()
         {
-            var result = await _soapClientService.GetDataAsync(1);
-           // _logger.LogInformation($"FetchMeaningOfLife returned '{result}'");
+            _logger.LogInformation($"FetchMeaningOfLife called");
+            await _soapClientService.GetDataAsync(1);
+           
         }
 
 
