@@ -5,7 +5,7 @@
     {
         public string GetData(int value)
         {
-            Thread.Sleep(1000);
+            //Thread.Sleep(30);
             return "42";
         }
 

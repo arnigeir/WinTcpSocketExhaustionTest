@@ -15,10 +15,10 @@ namespace SoapTestService.Services
             _soapClientService = service;
         }    
 
-        public async Task FetchMeaningOfLife()
+        public async Task<string> FetchMeaningOfLife()
         {
             _logger.LogInformation($"FetchMeaningOfLife called");
-            await _soapClientService.GetDataAsync(1);
+            return await _soapClientService.GetDataAsync(1).ConfigureAwait(false);
            
         }
 

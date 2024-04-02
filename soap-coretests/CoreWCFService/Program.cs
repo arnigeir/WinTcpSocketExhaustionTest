@@ -10,9 +10,10 @@ var app = builder.Build();
 app.UseServiceModel(serviceBuilder =>
 {
     serviceBuilder.AddService<Service>();
-    serviceBuilder.AddServiceEndpoint<Service, IService>(new BasicHttpBinding(BasicHttpSecurityMode.Transport), "/Service.svc");
+    serviceBuilder.AddServiceEndpoint<Service, IService>(new BasicHttpBinding(BasicHttpSecurityMode.None), "/Service.svc");
     var serviceMetadataBehavior = app.Services.GetRequiredService<ServiceMetadataBehavior>();
-    serviceMetadataBehavior.HttpsGetEnabled = true;
+    serviceMetadataBehavior.HttpsGetEnabled = false;
+    serviceMetadataBehavior.HttpGetEnabled = true;
 });
 
 app.Run();

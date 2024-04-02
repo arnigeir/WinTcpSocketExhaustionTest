@@ -1,4 +1,4 @@
-﻿namespace SoapTestService.Services
+﻿namespace SNBEndpoint.Services
 {
     public interface ISoapClientService
     {
