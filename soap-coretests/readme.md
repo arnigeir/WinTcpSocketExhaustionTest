@@ -1,7 +1,6 @@
-<h1>Simple platform to test out TCP connection pooling for WS (SOAP) client connections</h2>
+# Simple platform to test out TCP connection pooling for WS (SOAP) client connections
 
-
-<h2>CoreWCFService</h2>
+## CoreWCFService
 This is a simple WS server built with  <a href="https://github.com/corewcf/corewcf">CoreWCF</a>.  Build this and run from terminal
 
 
