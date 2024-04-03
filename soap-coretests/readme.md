@@ -4,18 +4,18 @@
 This is a simple WS server built with  <a href="https://github.com/corewcf/corewcf">CoreWCF</a>.  Build this and run from terminal
 
 
-<h2>CLI test clients using worker</h2>
+## CLI test clients using worker
 
-<h3>StandardSoapClient</h3>
+### StandardSoapClient
 Client, proxy and contract build with VS ConnectedServices tools and called without modifications in a while loop to simulate load. 
 Build and run from terminal or VS debug session
 
-<h3>PooledSoapClient</h3>
+### PooledSoapClient
 The proxy built with VS ConnectedServices but a named client modified with HttpMessageHandlerBehavior to use tcp connection pooling 
 Build and run from terminal or VS debug session
 
 
-<h3>Monitoring TCP connections in Win10/11</h3>
+### Monitoring TCP connections in Win10/11
 
 It takes some time for the clients to eat upp the TCP connections so the process can easily be monitored by polling the total 
 number of connections from a command line.
@@ -23,34 +23,35 @@ number of connections from a command line.
 Use  <i> Get-NetTCPConnection | Measure-Object</i> in PowerShell terminal to get total number of connections.  
 Note that this can be bit slow when the system gets loaded.
 
-<h3>Tests</h3>
+### Tests
 The tests were not conclusive as I failed to recall the original socket exception "System.ServiceModel.CommunicationException: Only one usage of each socket address (protocol/network address/port) is normally permitted."
 Instead the tests failed with a "async" exception - probably because of the loop calling the same async method in the worker
 
 The conclusion from those tests that it would be more realistic to call the soap service from a full blown NServiceBus endpoint and 
 compare modified endpoint to a modified endpoint with connection pool.
 
-<h2>Tests using  NServiceBus endpoints</h2>
+## Tests using  NServiceBus endpoints
 
 
 
-<h3>StandardEndpoint</h3>
+### StandardEndpoint
 This endpoint is analogous to our current implementation of NSB endpoints that connect to SOAP APIs
 
-<h3>PooledEndpoint</h3>
+### PooledEndpoint
 This endpoint uses a client with pooled tcp connections so that connections are reused from the pool - otherwise it is 
 identical to the StandardEndpoint.<br/>
 The goal is to be able to modify current endpoints without too much work to make them more resilient against connection exhaustion
 when calling SOAP api endpoints when the endpoint gets loaded.
 
 
-<h2>Testresults</h2>
-The SOAP server was installed  in folder  <br/><br/>
-\\ami-bus-d-5\c$\Utils\CoreWCFService<br/><br/> 
-and started from command line.<br/><br/>
-The Standard and Pooled endpoints were installed in folders <br/><br/>
-\\ami-bus-d-6\c$\Temp\StandardEndpointTest <br/><br/>and <br/><br/>
-\\ami-bus-d-6\c$\Temp\PooledEndpointTest<br/><br/><br/>
+## Testresults<
+The SOAP server was installed  in folder  
+> ami-bus-d-5\c$\Utils\CoreWCFService
+and started from command line.<br/>
+The Standard and Pooled endpoints were installed in folders
+> ami-bus-d-6\c$\Temp\StandardEndpointTest
+and 
+> \\ami-bus-d-6\c$\Temp\PooledEndpointTest
 
 respectively
 
