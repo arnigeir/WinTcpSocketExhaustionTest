@@ -46,11 +46,16 @@ when calling SOAP api endpoints when the endpoint gets loaded.
 
 ## Testresults<
 The SOAP server was installed  in folder  
+
 > ami-bus-d-5\c$\Utils\CoreWCFService
-and started from command line.<br/>
+
+and started from command line
 The Standard and Pooled endpoints were installed in folders
+
 > ami-bus-d-6\c$\Temp\StandardEndpointTest
+
 and 
+
 > \\ami-bus-d-6\c$\Temp\PooledEndpointTest
 
 respectively
