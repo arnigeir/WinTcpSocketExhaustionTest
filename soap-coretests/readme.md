@@ -81,5 +81,5 @@ The maximum number of TCP connections observed while running the test endpoints
 
 
 It seems that the pooled version is much more stable for the loads tested.  When testing with 400 Msg/sec the RabbitMQ on the 
-ami-bus-d-5 machine started to complain about "low disk" so tests with more load were not run.
+ami-bus-d-5 machine started to complain about "low disk" so further tests needs to be done with a RabbitMQ installation with more resources.
 
