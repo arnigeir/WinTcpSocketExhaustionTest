@@ -35,11 +35,22 @@ This endpoint is analogous to our current implementation of NSB endpoints that c
 This endpoint uses a client with pooled tcp connections so that connections are reused from the pool
 
 <h2>Testresults</h2>
-The SOAP server was installed  in folder  \\ami-bus-d-5\c$\Utils\CoreWCFService  and started from command line
-The Standard and Pooled endpoints were installed in folders \\ami-bus-d-6\c$\Users\vt_faradice_ag\Downloads\StandardEndpointTest and 
-\\ami-bus-d-6\c$\Users\vt_faradice_ag\Downloads\PooledEndpointTest respectively
+The SOAP server was installed  in folder  \\ami-bus-d-5\c$\Utils\CoreWCFService  and started from command line.
+The Standard and Pooled endpoints were installed in folders <br/><br/>
+\\ami-bus-d-6\c$\Temp\StandardEndpointTest <br/>and <br/>
+\\ami-bus-d-6\c$\Temp\PooledEndpointTest<br/><br/>
 
-Both endpoints were run 3 times by sending 2000 message bursts every 5,10 and 15 seconds that equals to 133,200,400 messages per second
+respectively
+
+Both endpoints were run 3 times by sending 2000 message bursts every 15,10 and 5 seconds that equals roughly 
+to 133,200 and 400 messages per second
+
+The number of TCP connections were monitored on the client machine in a PowerShell terminal using the command 
+<br/></br>
+ Get-NetTCPConnection | Measure-Object
+<br/></br>
+repeatedly
+
 
 <table>
 <head>
