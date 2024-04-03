@@ -24,15 +24,26 @@ number of connections from a command line.
 Use  <i> Get-NetTCPConnection | Measure-Object</i> in PowerShell terminal to get total number of connections.  
 Note that this can be bit slow when the system gets loaded.
 
+<h3>Tests</h3>
+The tests were not conclusive as I failed to recall the original socket exception "System.ServiceModel.CommunicationException: Only one usage of each socket address (protocol/network address/port) is normally permitted."
+Instead the tests failed with a "async" exception - probably because of the loop calling the same async method in the worker
 
-<h2>NServiceBus test endpoints using Quartz jobs to publish messages</h2>
+The conclusion from those tests that it would be more realistic to call the soap service from a full blown NServiceBus endpoint and 
+compare modified endpoint to a modified endpoint with connection pool.
+
+<h2>Tests using  NServiceBus endpoints</h2>
+
 
 
 <h3>StandardEndpoint</h3>
 This endpoint is analogous to our current implementation of NSB endpoints that connect to SOAP APIs
 
 <h3>PooledEndpoint</h3>
-This endpoint uses a client with pooled tcp connections so that connections are reused from the pool
+This endpoint uses a client with pooled tcp connections so that connections are reused from the pool - otherwise it is 
+identical to the StandardEndpoint.<br/>
+The goal is to be able to modify current endpoints without too much work to make them more resilient against connection exhaustion
+when calling SOAP api endpoints when the endpoint gets loaded.
+
 
 <h2>Testresults</h2>
 The SOAP server was installed  in folder  \\ami-bus-d-5\c$\Utils\CoreWCFService  and started from command line.
