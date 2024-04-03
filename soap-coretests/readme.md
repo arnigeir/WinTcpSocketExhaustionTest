@@ -49,7 +49,8 @@ The SOAP server was installed  in folder
 
 > ami-bus-d-5\c$\Utils\CoreWCFService
 
-and started from command line
+and started from command line.
+<br/>
 The Standard and Pooled endpoints were installed in folders
 
 > ami-bus-d-6\c$\Temp\StandardEndpointTest
@@ -64,41 +65,18 @@ Both endpoints were run 3 times by sending 2000 message bursts every 15,10 and 5
 to 133,200 and 400 messages per second
 
 The number of TCP connections were monitored on the client machine in a PowerShell terminal using the command 
-<br/></br>
- Get-NetTCPConnection | Measure-Object
-<br/></br>
-repeatedly
+
+> Get-NetTCPConnection | Measure-Object
+
+repeatedly.
 
 
-<table>
-<head>
-<tr>
-<th>Messages pre second</th>
-<th>Standard</th>
-<th>Pooled</th>
-</tr>
-</head>
-<body>
+| Messages per second | Standard | Pooled |
+|---------------------|----------|--------| 
+| 133 | 16752 (failed) | 600 |
+| 200 | 16752 (failed) | 600 |
+| 400 | Not tested     | 625 |
 
-<tr>
-<td>133</td>
-<td>16752 (failed)</td>
-<td>600</td>
-</tr>
-
-<tr>
-<td>200</td>
-<td>16752 (failed)</td>
-<td>600</td>
-</tr>
-
-<tr>
-<td>400</td>
-<td>Not tested</td>
-<td>625</td>
-</tr>
-
-</body>
 
 It seems that the pooled version is much more stable for the loads tested.  When testing with 400 Msg/sec the RabbitMQ on the 
 ami-bus-d-5 machine started to complain about "low disk" so tests with more load were not run.
