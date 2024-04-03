@@ -53,11 +53,11 @@ and started from command line.
 <br/>
 The Standard and Pooled endpoints were installed in folders
 
-> ami-bus-d-6\c$\Temp\StandardEndpointTest
+> ami-bus-d-6\c$\Utils\StandardEndpointTest
 
 and 
 
-> \\ami-bus-d-6\c$\Temp\PooledEndpointTest
+> \\ami-bus-d-6\c$\Utils\PooledEndpointTest
 
 respectively
 
@@ -69,12 +69,14 @@ The number of TCP connections were monitored on the client machine in a PowerShe
 > Get-NetTCPConnection | Measure-Object
 
 repeatedly.
+<br/><br/>
 
+The maximum number of TCP connections observed while running the test endpoints
 
 | Messages per second | Standard | Pooled |
 |---------------------|----------|--------| 
-| 133 | 16752 (failed) | 600 |
-| 200 | 16752 (failed) | 600 |
+| 133 | 16752 (sockets exhausted) | 600 |
+| 200 | 16752 (sockets exhausted) | 600 |
 | 400 | Not tested     | 625 |
 
 
