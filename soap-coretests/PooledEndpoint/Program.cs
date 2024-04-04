@@ -67,10 +67,9 @@ namespace SNBEndpoint
                 .AddQuartzHostedService(options =>
                 {
                     options.WaitForJobsToComplete = true;
-                })                
-                //.AddScoped<IService>(d => new ServiceClient(ServiceClient.EndpointConfiguration.BasicHttpBinding_IService, "http://ami-bus-d-5:5000/Service.svc"))
-                .AddSingleton<ISoapClientService, SoapClientService>()
-                .AddHttpClient("MyPrecious", client =>
+                })                               
+                .AddScoped<ISoapClientService, SoapClientService>()
+                .AddHttpClient(SoapClientService.ServiceName, client =>
                 {
                     client.BaseAddress = new Uri("http://localhost:5000/Service.svc");
 

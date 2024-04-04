@@ -15,7 +15,7 @@ namespace SNBEndpoint.Services
         {
             _soapClient = new ServiceClient();
             _soapClient.Endpoint.EndpointBehaviors.Add(new HttpMessageHandlerBehavior(factory, ServiceName));
-            _logger.Info("Created a pooled soap client ...");
+            //_logger.Info("Created a pooled soap client ...");
         }
 
         public async Task<string> FetchMeaningOfLife()
